@@ -58,6 +58,11 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
 
 .notes { display: grid; gap: 8px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
 .notes ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.video { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.video iframe { width: 100%; aspect-ratio: 9 / 16; max-width: 100%; border: 0; border-radius: 10px; background: var(--surface); }
+.video .cap { display: grid; gap: 2px; font-size: 14px; }
+.video .cap span { color: var(--muted); font-size: 13px; }
 @media (max-width: 520px) { .bar { grid-template-columns: 96px 1fr 56px; } th, td { padding: 8px 10px; } }
 </style>
 
@@ -85,6 +90,13 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-
       <li>Large creators <b>@chihowe</b> (548K) and <b>@ravizephyr</b> (180K) have already made Indah Water content, so they are proven partners for this topic.</li>
     </ul>
   </div>
+
+  <section>
+    <div class="eyebrow">Watch</div>
+    <h2>Videos worth seeing</h2>
+    <p class="note">The niche's top performers and the two biggest viral posts, played from TikTok.</p>
+    <div class="videos" id="videos"></div>
+  </section>
 
   <section>
     <div class="eyebrow">Group 1</div>
@@ -149,7 +161,20 @@ const viral = [
 ];
 const tags = [["#kumbahan", 26250887, 25], ["#septictank", 24484307, 7], ["#indahwater", 2334378, 22], ["#tangkiseptik", 1579476, 21]];
 
+const featured = [
+  ["csesewage1", "7648632499513363730", "Pumping a 14-year-old septic tank", 825800],
+  ["iwk_official", "7541314094763183378", "Indah Water explains its sewerage assets", 296700],
+  ["eman.proplumber", "7637485926217714965", "What causes badly blocked sewer pipes", 493800],
+  ["chihowe", "7585528195542306068", "Behind the scenes with Indah Water", 280600],
+  ["kilatkilau", "7525316844698242322", "Countries that drink treated sewage water", 7400000],
+  ["ohbulanofficial", "7554961975382412551", "Fibreglass manhole covers", 5600000],
+];
+
 const el = (id, html) => document.getElementById(id).innerHTML = html;
+el("videos", featured.map(([u, id, title, views]) => `<figure class="video" style="margin:0">
+  <iframe src="https://www.tiktok.com/player/v1/${id}?description=0&music_info=0" title="${title} by @${u}" loading="lazy" allow="fullscreen; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+  <figcaption class="cap"><b>${title}</b><span><a href="${tt(u)}" target="_blank" rel="noopener">@${u}</a> · ${fmt(views)} views</span></figcaption>
+</figure>`).join(""));
 el("regulars", regulars.map(([u, role, f, n, v, url, tag]) => `<tr>
   <td><a class="handle" href="${tt(u)}" target="_blank" rel="noopener">@${u}</a>${tag ? `<span class="tag">${tag}</span>` : ""}<div class="role">${role}</div></td>
   <td class="num">${fmt(f)}</td><td class="num">${n}</td><td class="num">${fmt(v)}</td>
