@@ -1,0 +1,165 @@
+<title>Septic TikTok Malaysia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column report — summary strip, two creator tables, hashtag bars, top videos, method notes */
+:root {
+  --bg: #f3f5f2; --surface: #ffffff; --fg: #1b2420; --muted: #4c5953; --line: #d9e0dc;
+  --accent: #185a4d; --accent-soft: #dcebe6; --warn: #8a5a12;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121815; --surface: #1a221e; --fg: #e4ebe7; --muted: #a9b6b0; --line: #2c3833;
+  --accent: #6cc4ad; --accent-soft: #1f3a32; --warn: #e0b46a; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #121815; --surface: #1a221e; --fg: #e4ebe7; --muted: #a9b6b0; --line: #2c3833;
+  --accent: #6cc4ad; --accent-soft: #1f3a32; --warn: #e0b46a; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font: 15px/1.6 var(--body); }
+.wrap { max-width: 960px; margin: 0 auto; padding-inline: 20px; padding-block: 48px 72px; display: grid; gap: 48px; }
+h1, h2 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.1; }
+h1 { font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: 1.5rem; font-weight: 600; }
+p { margin: 0; max-width: 65ch; }
+.eyebrow { font: 500 12px var(--mono); text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); }
+.lede { color: var(--muted); font-size: 1.05rem; }
+header { display: grid; gap: 14px; }
+section { display: grid; gap: 16px; min-width: 0; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.stat { background: var(--surface); padding: 16px 18px; display: grid; gap: 2px; }
+.stat b { font: 600 1.6rem var(--display); font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 13px; }
+
+.callout { background: var(--accent-soft); border-radius: 10px; padding: 18px 20px; display: grid; gap: 8px; }
+.callout ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+.tbl { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font: 500 11px var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); background: var(--bg); white-space: nowrap; }
+td.num, th.num { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+.handle { font-weight: 600; white-space: nowrap; }
+.role { color: var(--muted); font-size: 13px; }
+.tag { display: inline-block; font: 500 11px var(--mono); padding: 2px 9px; border-radius: 99px; background: var(--accent-soft); color: var(--accent); margin-left: 6px; vertical-align: 1px; }
+
+.bars { display: grid; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.bar { display: grid; grid-template-columns: 120px 1fr 70px; gap: 12px; align-items: center; font-size: 14px; }
+.bar .lbl { font-family: var(--mono); }
+.bar .track { height: 14px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--accent); border-radius: 3px; }
+.bar .val { font-family: var(--mono); text-align: right; font-variant-numeric: tabular-nums; }
+.note { color: var(--muted); font-size: 13px; }
+
+.notes { display: grid; gap: 8px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+@media (max-width: 520px) { .bar { grid-template-columns: 96px 1fr 56px; } th, td { padding: 8px 10px; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">TikTok scrape · Apify · 2 Oct 2026</div>
+    <h1>Who talks about septic tanks on Malaysian TikTok</h1>
+    <p class="lede">128 videos collected from four hashtags and one search, grouped by creator to find who posts about septic tanks, sewerage and wastewater in Malaysia.</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><b>128</b><span>videos scraped</span></div>
+    <div class="stat"><b>87</b><span>unique creators</span></div>
+    <div class="stat"><b>80</b><span>videos in Malay</span></div>
+    <div class="stat"><b>54.7M</b><span>total views</span></div>
+    <div class="stat"><b>$0.64</b><span>Apify credit used</span></div>
+  </div>
+
+  <div class="callout">
+    <h2>What the data says</h2>
+    <ul>
+      <li>This niche has no dedicated big influencer. The regular posters are Indah Water and small septic-pumping businesses.</li>
+      <li><b>@iwk_official</b> posts the most (15 videos) but has only 7.9K followers.</li>
+      <li><b>@csesewage1</b> is the breakout: 2.3K followers, yet one pumping video reached 826K views. Real "sedut tangki najis" footage pulls an audience.</li>
+      <li>Large creators <b>@chihowe</b> (548K) and <b>@ravizephyr</b> (180K) have already made Indah Water content, so they are proven partners for this topic.</li>
+    </ul>
+  </div>
+
+  <section>
+    <div class="eyebrow">Group 1</div>
+    <h2>Regular posters</h2>
+    <p class="note">Malay-language accounts with two or more videos on the topic, ranked by number of on-topic videos.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Creator</th><th class="num">Followers</th><th class="num">Videos</th><th class="num">Views</th><th>Top video</th></tr></thead>
+      <tbody id="regulars"></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Group 2</div>
+    <h2>Big accounts with one viral video</h2>
+    <p class="note">General Malaysian accounts that posted once on the topic. High reach, but not niche voices.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Creator</th><th class="num">Followers</th><th class="num">Views</th><th>What it was about</th></tr></thead>
+      <tbody id="viral"></tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <div class="eyebrow">Where the views are</div>
+    <h2>Views by hashtag</h2>
+    <div class="bars" id="bars"></div>
+    <p class="note">30 videos per hashtag. #septictank is mostly non-Malaysian content (only 7 of 30 in Malay), so #kumbahan is the strongest local tag.</p>
+  </section>
+
+  <div class="notes">
+    <b>How this was made</b>
+    <ul>
+      <li>Apify Actor <code>clockworks/tiktok-scraper</code>, run from <code>scrape-tiktok.mjs</code>.</li>
+      <li>Malaysian content was identified by caption language (Malay), not confirmed location. Indonesian-language videos were excluded.</li>
+      <li>This is a sample of about 30 videos per hashtag, not a full census. Most keyword searches returned no results; the hashtags did the work.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const fmt = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(/\.0$/,"") + "M" : n >= 1e3 ? (n/1e3).toFixed(1).replace(/\.0$/,"") + "K" : String(n);
+const tt = u => "https://www.tiktok.com/@" + u;
+
+const regulars = [
+  ["iwk_official", "Indah Water Konsortium (official)", 7894, 15, 1136353, "https://www.tiktok.com/@iwk_official/video/7541314094763183378", "official"],
+  ["csesewage1", "CSE Sewage Services, septic pumping", 2256, 6, 1280141, "https://www.tiktok.com/@csesewage1/video/7648632499513363730", "breakout"],
+  ["shah.seduttangki", "Septic tank pumping service", 1046, 4, 86059, "https://www.tiktok.com/@shah.seduttangki/video/7482948062315416850"],
+  ["sedut.tangki.najis", "Septic tank pumping service", 517, 3, 6320, "https://www.tiktok.com/@sedut.tangki.najis/video/7686765497106386196"],
+  ["eman.proplumber", "Plumber, blocked sewer pipes", 3298, 2, 592200, "https://www.tiktok.com/@eman.proplumber/video/7637485926217714965"],
+  ["toponeproperty", "Property, explains septic tanks", 25400, 2, 281000, "https://www.tiktok.com/@toponeproperty/video/7612946017226476820"],
+  ["chihowe", "Lifestyle creator, Indah Water collab", 547800, 2, 280600, "https://www.tiktok.com/@chihowe/video/7585528195542306068", "influencer"],
+  ["abecse1", "Septic pumping service", 4438, 2, 276500, "https://www.tiktok.com/@abecse1/video/7575951015267159314"],
+  ["ravizephyr", "Comedy creator, Indah Water content", 179900, 2, 232400, "https://www.tiktok.com/@ravizephyr/video/7589224287429610759", "influencer"],
+  ["wnrbangloidaman", "Builder, septic tank installation", 6398, 2, 32400, "https://www.tiktok.com/@wnrbangloidaman/video/7525332275127422228"],
+  ["sr_amirs", "Explains correct septic installation", 10400, 2, 31934, "https://www.tiktok.com/@sr_amirs/video/7612134140539850004"],
+];
+const viral = [
+  ["kilatkilau", 906000, 7400000, "Countries that drink treated sewage water", "https://www.tiktok.com/@kilatkilau/video/7525316844698242322"],
+  ["ohbulanofficial", 5700000, 5600000, "Fibreglass manhole covers", "https://www.tiktok.com/@ohbulanofficial/video/7554961975382412551"],
+  ["thesiakapkeli", 2100000, 4300000, "Trending news, sewage smell", "https://www.tiktok.com/@thesiakapkeli/video/7212531313922886938"],
+  ["lobakmerahmy", 1600000, 588600, "News: drowning in a sewage pond", "https://www.tiktok.com/@lobakmerahmy/video/7603249019372064020"],
+  ["financialfaiz", 780100, 387700, "What the IWK bill pays for", "https://www.tiktok.com/@financialfaiz/video/7606167814185028884"],
+];
+const tags = [["#kumbahan", 26250887, 25], ["#septictank", 24484307, 7], ["#indahwater", 2334378, 22], ["#tangkiseptik", 1579476, 21]];
+
+const el = (id, html) => document.getElementById(id).innerHTML = html;
+el("regulars", regulars.map(([u, role, f, n, v, url, tag]) => `<tr>
+  <td><a class="handle" href="${tt(u)}" target="_blank" rel="noopener">@${u}</a>${tag ? `<span class="tag">${tag}</span>` : ""}<div class="role">${role}</div></td>
+  <td class="num">${fmt(f)}</td><td class="num">${n}</td><td class="num">${fmt(v)}</td>
+  <td><a href="${url}" target="_blank" rel="noopener">Watch</a></td></tr>`).join(""));
+el("viral", viral.map(([u, f, v, about, url]) => `<tr>
+  <td><a class="handle" href="${tt(u)}" target="_blank" rel="noopener">@${u}</a></td>
+  <td class="num">${fmt(f)}</td><td class="num">${fmt(v)}</td>
+  <td><a href="${url}" target="_blank" rel="noopener">${about}</a></td></tr>`).join(""));
+const max = Math.max(...tags.map(t => t[1]));
+el("bars", tags.map(([t, v, ms]) => `<div class="bar"><span class="lbl">${t}</span>
+  <div class="track"><div class="fill" style="width:${(v / max * 100).toFixed(1)}%"></div></div>
+  <span class="val">${fmt(v)}</span></div>`).join(""));
+</script>
